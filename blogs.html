@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+
+  <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Itim' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Irish Grover' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Island Moments' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  </head>
+  <style>
+/*--------------------------------------------------------------
+# Portfolio
+--------------------------------------------------------------*/
+.portfolio #portfolio-flters {
+  padding: 0;
+  margin: 0 auto 25px auto;
+  list-style: none;
+  text-align: center;
+  background: white;
+  border-radius: 50px;
+  padding: 2px 15px;
+}
+
+.portfolio #portfolio-flters li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px 20px 10px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  color: #444444;
+  margin: 0 4px 8px 4px;
+  transition: 0.3s;
+  border-radius: 50px;
+  border: 1px solid #fff;
+}
+
+.portfolio #portfolio-flters li:hover,
+.portfolio #portfolio-flters li.filter-active {
+  color: #4154f1;
+  border-color: #4154f1;
+}
+
+.portfolio #portfolio-flters li:last-child {
+  margin-right: 0;
+}
+
+.portfolio .portfolio-wrap {
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.portfolio .portfolio-wrap::before {
+  content: "";
+  background: rgba(255, 255, 255, 0.75);
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  top: 30px;
+  bottom: 30px;
+  transition: all ease-in-out 0.3s;
+  z-index: 2;
+  opacity: 0;
+}
+
+.portfolio .portfolio-wrap img {
+  transition: 1s;
+}
+
+.portfolio .portfolio-wrap .portfolio-info {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  z-index: 3;
+  transition: all ease-in-out 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.portfolio .portfolio-wrap .portfolio-info::before {
+  display: block;
+  content: "";
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  top: 35px;
+  left: 35px;
+  border-top: 3px solid rgba(1, 41, 112, 0.2);
+  border-left: 3px solid rgba(1, 41, 112, 0.2);
+  transition: all 0.5s ease 0s;
+  z-index: 9994;
+}
+
+.portfolio .portfolio-wrap .portfolio-info::after {
+  display: block;
+  content: "";
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  bottom: 35px;
+  right: 35px;
+  border-bottom: 3px solid rgba(1, 41, 112, 0.2);
+  border-right: 3px solid rgba(1, 41, 112, 0.2);
+  transition: all 0.5s ease 0s;
+  z-index: 9994;
+}
+
+.portfolio .portfolio-wrap .portfolio-info h4 {
+  font-size: 20px;
+  color: #012970;
+  font-weight: 700;
+}
+
+.portfolio .portfolio-wrap .portfolio-info p {
+  color: #012970;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 0;
+  margin: 0;
+}
+
+.portfolio .portfolio-wrap .portfolio-links {
+  text-align: center;
+  z-index: 4;
+}
+
+.portfolio .portfolio-wrap .portfolio-links a {
+  color: #fff;
+  background: #4154f1;
+  margin: 10px 2px;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.portfolio .portfolio-wrap .portfolio-links a i {
+  font-size: 24px;
+  line-height: 0;
+}
+
+.portfolio .portfolio-wrap .portfolio-links a:hover {
+  background: #5969f3;
+}
+
+.portfolio .portfolio-wrap:hover img {
+  transform: scale(1.1);
+}
+
+.portfolio .portfolio-wrap:hover::before {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 1;
+}
+
+.portfolio .portfolio-wrap:hover .portfolio-info {
+  opacity: 1;
+}
+
+.portfolio .portfolio-wrap:hover .portfolio-info::before {
+  top: 15px;
+  left: 15px;
+}
+
+.portfolio .portfolio-wrap:hover .portfolio-info::after {
+  bottom: 15px;
+  right: 15px;
+}
+
+/*--------------------------------------------------------------
+# Portfolio Details
+--------------------------------------------------------------*/
+.portfolio-details {
+  padding-top: 40px;
+}
+
+.portfolio-details .portfolio-details-slider img {
+  width: 100%;
+}
+
+.portfolio-details .portfolio-details-slider .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  opacity: 1;
+  border: 1px solid #4154f1;
+}
+
+.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #4154f1;
+}
+
+.portfolio-details .portfolio-info {
+  padding: 30px;
+  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+}
+
+.portfolio-details .portfolio-info h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.portfolio-details .portfolio-info ul {
+  list-style: none;
+  padding: 0;
+  font-size: 15px;
+}
+
+.portfolio-details .portfolio-info ul li+li {
+  margin-top: 10px;
+}
+
+.portfolio-details .portfolio-description {
+  padding-top: 30px;
+}
+
+.portfolio-details .portfolio-description h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.portfolio-details .portfolio-description p {
+  padding: 0;
+}
+
+
+       /* Add a dot indicator before the nav links */
+       .nav-link {
+            position: relative;
+            padding-left: 20px; /* Add space for the dot */
+        }
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: transparent; /* Default: no color */
+            transition: background-color 0.3s;
+        }
+        .nav-link.active::before {
+            background-color: black; /* Highlight the dot for the active page */
+        }
+    a{
+        text-decoration: none;
+    }
+  </style>
+  <body>
+    
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid border border-dark">
+          <a class="navbar-brand" href="#">Bloggy</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 ">
+              <li class="nav-item">
+                <a class="nav-link"  href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="talking.html">Talk To Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="blogs.html">Blogs</a>
+              </li>
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
+
+
+
+      <main id="main">
+        
+   <section id="portfolio" class="portfolio">
+
+      <div class="container blog" data-aos="fade-up">
+
+        <header class="section-header">
+          <h2>Blogs</h2>
+        </header>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-app">Research</li>
+              <li data-filter=".filter-card">Invention</li>
+              <li data-filter=".filter-web">Exploration</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class=" blog row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200" >
+          <div class="tab-pane fade active show">
+            <div class="row g-5">
+              <div class="col-lg-12">
+                <div class="row gy-5 posts-list">
+          <div class="col-lg-4 portfolio-item filter-app">
+            <article class="d-flex flex-column">
+
+              <div class="post-img">
+                <img src="assets/img/blog/blog-2.jpg" alt="" class="img-fluid">
+              </div>
+
+              <h2 class="title" style="width: 18rem; font-family: 'Itim';font-size: 22px;">
+                <a href="blogs_details.html" style="text-decoration: none;">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
+              </h2>
+
+              <div class="meta-top">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blogs_details.html">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blogs_details.html"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blogs_details.html">12 Comments</a></li>
+                </ul>
+              </div>
+
+              <div class="content">
+                <p style="width: 18rem; font-family: 'Itim';font-size: 15px;">
+                  Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
+                </p>
+              </div>
+
+              <div class="read-more mt-auto align-self-end">
+                <a href="blogs_details.html">Read More <i class="bi bi-arrow-right"></i></a>
+              </div>
+
+            </article>
+          </div>
+
+          
+
+          <div class="col-lg-4 portfolio-item filter-web">
+            <article class="d-flex flex-column">
+
+              <div class="post-img">
+                <img src="assets/img/blog/blog-2.jpg" alt="" class="img-fluid">
+              </div>
+
+              <h2 class="title" style="width: 18rem; font-family: 'Itim';font-size: 22px;">
+                <a href="blogs_details.html" style="text-decoration: none;">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
+              </h2>
+
+              <div class="meta-top">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blogs_details.html">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blogs_details.html"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blogs_details.html">12 Comments</a></li>
+                </ul>
+              </div>
+
+              <div class="content">
+                <p style="width: 18rem; font-family: 'Itim';font-size: 15px;">
+                  Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
+                </p>
+              </div>
+
+              <div class="read-more mt-auto align-self-end">
+                <a href="blogs_details.html">Read More <i class="bi bi-arrow-right"></i></a>
+              </div>
+
+            </article>
+          </div>
+
+          <div class="col-lg-4 portfolio-item filter-app">
+            <article class="d-flex flex-column">
+
+              <div class="post-img">
+                <img src="assets/img/blog/blog-2.jpg" alt="" class="img-fluid">
+              </div>
+
+              <h2 class="title" style="width: 18rem; font-family: 'Itim';font-size: 22px;">
+                <a href="blogs_details.html" style="text-decoration: none;">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
+              </h2>
+
+              <div class="meta-top">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blogs_details.html">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blogs_details.html"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blogs_details.html">12 Comments</a></li>
+                </ul>
+              </div>
+
+              <div class="content">
+                <p style="width: 18rem; font-family: 'Itim';font-size: 15px;">
+                  Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
+                </p>
+              </div>
+
+              <div class="read-more mt-auto align-self-end">
+                <a href="blogs_details.html">Read More <i class="bi bi-arrow-right"></i></a>
+              </div>
+
+            </article>
+          </div>
+
+          <div class="col-lg-4 portfolio-item filter-card">
+            <article class="d-flex flex-column">
+
+              <div class="post-img">
+                <img src="assets/img/blog/blog-2.jpg" alt="" class="img-fluid">
+              </div>
+
+              <h2 class="title" style="width: 18rem; font-family: 'Itim';font-size: 22px;">
+                <a href="blogs_details.html" style="text-decoration: none;">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
+              </h2>
+
+              <div class="meta-top">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blogs_details.html">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blogs_details.html"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blogs_details.html">12 Comments</a></li>
+                </ul>
+              </div>
+
+              <div class="content">
+                <p style="width: 18rem; font-family: 'Itim';font-size: 15px;">
+                  Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
+                </p>
+              </div>
+
+              <div class="read-more mt-auto align-self-end">
+                <a href="blogs_details.html">Read More <i class="bi bi-arrow-right"></i></a>
+              </div>
+
+            </article>
+          </div>
+
+          <div class="col-lg-4 portfolio-item filter-web">
+            <article class="d-flex flex-column">
+
+              <div class="post-img">
+                <img src="assets/img/blog/blog-2.jpg" alt="" class="img-fluid">
+              </div>
+
+              <h2 class="title" style="width: 18rem; font-family: 'Itim';font-size: 22px;">
+                <a href="blogs_details.html" style="text-decoration: none;">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
+              </h2>
+
+              <div class="meta-top">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blogs_details.html">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blogs_details.html"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blogs_details.html">12 Comments</a></li>
+                </ul>
+              </div>
+
+              <div class="content">
+                <p style="width: 18rem; font-family: 'Itim';font-size: 15px;">
+                  Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
+                </p>
+              </div>
+
+              <div class="read-more mt-auto align-self-end">
+                <a href="blogs_details.html">Read More <i class="bi bi-arrow-right"></i></a>
+              </div>
+
+            </article>
+          </div>
+
+          <div class="col-lg-4 portfolio-item filter-app">
+            <article class="d-flex flex-column">
+
+              <div class="post-img">
+                <img src="assets/img/blog/blog-2.jpg" alt="" class="img-fluid">
+              </div>
+
+              <h2 class="title" style="width: 18rem; font-family: 'Itim';font-size: 22px;">
+                <a href="blogs_details.html" style="text-decoration: none;">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
+              </h2>
+
+              <div class="meta-top">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blogs_details.html">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blogs_details.html"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blogs_details.html">12 Comments</a></li>
+                </ul>
+              </div>
+
+              <div class="content">
+                <p style="width: 18rem; font-family: 'Itim';font-size: 15px;">
+                  Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
+                </p>
+              </div>
+
+              <div class="read-more mt-auto align-self-end">
+                <a href="blogs_details.html">Read More <i class="bi bi-arrow-right"></i></a>
+              </div>
+
+            </article>
+          </div>
+
+          <div class="col-lg-4 portfolio-item filter-card">
+            <article class="d-flex flex-column">
+
+              <div class="post-img">
+                <img src="assets/img/blog/blog-2.jpg" alt="" class="img-fluid">
+              </div>
+
+              <h2 class="title" style="width: 18rem; font-family: 'Itim';font-size: 22px;">
+                <a href="blogs_details.html" style="text-decoration: none;">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
+              </h2>
+
+              <div class="meta-top">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blogs_details.html">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blogs_details.html"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blogs_details.html">12 Comments</a></li>
+                </ul>
+              </div>
+
+              <div class="content">
+                <p style="width: 18rem; font-family: 'Itim';font-size: 15px;">
+                  Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
+                </p>
+              </div>
+
+              <div class="read-more mt-auto align-self-end">
+                <a href="blogs_details.html">Read More <i class="bi bi-arrow-right"></i></a>
+              </div>
+
+            </article>
+          </div>
+
+          <div class="col-lg-4 portfolio-item filter-card">
+            <article class="d-flex flex-column">
+
+              <div class="post-img">
+                <img src="assets/img/blog/blog-2.jpg" alt="" class="img-fluid">
+              </div>
+
+              <h2 class="title" style="width: 18rem; font-family: 'Itim';font-size: 22px;">
+                <a href="blogs_details.html" style="text-decoration: none;">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
+              </h2>
+
+              <div class="meta-top">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blogs_details.html">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blogs_details.html"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blogs_details.html">12 Comments</a></li>
+                </ul>
+              </div>
+
+              <div class="content">
+                <p style="width: 18rem; font-family: 'Itim';font-size: 15px;">
+                  Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
+                </p>
+              </div>
+
+              <div class="read-more mt-auto align-self-end">
+                <a href="blogs_details.html">Read More <i class="bi bi-arrow-right"></i></a>
+              </div>
+
+            </article>
+          </div>
+
+          <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="asset/img/portfolio/portfolio-9.webp" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Web 3</h4>
+                <p>Web</p>
+                <div class="portfolio-links">
+                  <a href="asset/img/portfolio/portfolio-9.webp" data-gallery="portfolioGallery" class="portfokio-lightbox" title="Web 3"><i class="bi bi-plus"></i></a>
+                  <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+
+          <div class="col-lg-4 portfolio-item filter-web">
+            <article class="d-flex flex-column">
+
+              <div class="post-img">
+                <img src="assets/img/blog/blog-2.jpg" alt="" class="img-fluid">
+              </div>
+
+              <h2 class="title" style="width: 18rem; font-family: 'Itim';font-size: 22px;">
+                <a href="blogs_details.html" style="text-decoration: none;">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
+              </h2>
+
+              <div class="meta-top">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blogs_details.html">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blogs_details.html"><time datetime="2022-01-01">Jan 1, 2022</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blogs_details.html">12 Comments</a></li>
+                </ul>
+              </div>
+
+              <div class="content">
+                <p style="width: 18rem; font-family: 'Itim';font-size: 15px;">
+                  Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
+                </p>
+              </div>
+
+              <div class="read-more mt-auto align-self-end">
+                <a href="blogs_details.html">Read More <i class="bi bi-arrow-right"></i></a>
+              </div>
+
+            </article>
+          </div>
+
+        </div>
+        <!-- <div class="blog-pagination">
+          <ul class="justify-content-center">
+            <li><a href="#">1</a></li>
+            <li class="active"><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+          </ul>
+       </div>End blog pagination -->
+      
+      </div>
+
+    </section><!-- End Portfolio Section -->
+    <i class="bi bi-list mobile-nav-toggle"></i>
+
+                 
+      
+          
+         
+
+    
+    <script src="asset/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="asset/vendor/aos/aos.js"></script>
+    <script src="asset/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="asset/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="asset/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+     <script src="asset/vendor/php-email-form/validate.js"></script>
+  
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+ 
+
+
+  <!-- Template Main JS File -->
+
+      </body>
+      </html>
